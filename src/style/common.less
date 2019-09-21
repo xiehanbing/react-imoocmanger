@@ -1,0 +1,45 @@
+@import "./../resource/default.less";
+.container {
+  display: flex;
+  height: 100%;
+  background: #f1f3f5;
+  .nav-left {
+    width: 14.4444%;
+    min-width: 180px;
+    height: calc(100wh);
+    background-color: #001529;
+
+    .logo {
+      line-height: 90px;
+      padding-left: 20px;
+      background: #002140;
+
+      h1 {
+        color: #fff;
+        font-size: 20px;
+        margin: 0 0 0 12px;
+        font-weight: 600;
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      img {
+        height: 35px;
+        vertical-align: middle;
+        border-style: none;
+      }
+    }
+  }
+
+  .main {
+    height: calc(100wh);
+    flex: 1;
+    // background-color: @colorL;
+  }
+
+  .content {
+    position: relative;
+    padding: 20px;
+    height: calc(70%);
+  }
+}

@@ -1,0 +1,57 @@
+@import "./../../resource/default.less";
+.header {
+  background-color: @colorI;
+  font-size: 18px;
+  color: @colorJ;
+
+  box-shadow: 0 0 10px @colorK;
+  webkit-box-shadow: 0 0 10px @colorK;
+  .header-top {
+    height: 60px;
+    line-height: 60px;
+    padding: 0 20px;
+    text-align: right;
+    a {
+      margin-left: 40px;
+    }
+    font-size: 14px;
+  }
+
+  .breadcrumb {
+    height: 44px;
+    line-height: 44px;
+    padding: 0 20px;
+    position: relative;
+    font-size: 14px;
+    border-top: 1px solid #f9c700;
+
+    .breadcrumb-title {
+      font-size: 18px;
+      text-align: center;
+      width: 150px;
+      height: 100%;
+      white-space: nowrap;
+    }
+
+    .weather {
+      text-align: right;
+      font-size: 14px;
+      // padding-right: 10px;
+
+      .date {
+        margin-right: 10px;
+      }
+
+      .weather-image {
+        img {
+          height: 22px;
+          margin-top: -3px;
+        }
+        margin: 0 14px 0 20px;
+      }
+
+      .weather-message {
+      }
+    }
+  }
+}
