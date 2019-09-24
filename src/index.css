@@ -15,3 +15,8 @@ code {
 #root {
   height: 100%;
 }
+
+.ant-menu-item>a {
+  display: block;
+  color: rgba(0, 0, 0, 0.65);
+}
