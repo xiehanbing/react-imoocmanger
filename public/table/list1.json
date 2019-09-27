@@ -1,0 +1,87 @@
+{
+    "result": {
+        "page": 1,
+        "page_size": 10,
+        "total_count": 100,
+        "list":
+
+            [{
+                    "id": 0,
+                    "username": "Jack",
+                    "sex": "1",
+                    "state": "1",
+                    "interest": "1",
+                    "isMarried": "1",
+                    "birthday": "2000-01-01",
+                    "address": "北京市海淀区奥林匹克公园",
+                    "time": "09:00:00"
+                },
+                {
+                    "id": 1,
+                    "username": "Mark",
+                    "sex": "2",
+                    "state": "3",
+                    "interest": "2",
+                    "isMarried": "1",
+                    "birthday": "2000-01-01",
+                    "address": "北京市海淀区奥林匹克公园",
+                    "time": "09:00:00"
+                },
+                {
+                    "id": 2,
+                    "username": "Tom",
+                    "sex": "2",
+                    "state": "3",
+                    "interest": "5",
+                    "isMarried": "1",
+                    "birthday": "2000-01-01",
+                    "address": "北京市海淀区奥林匹克公园",
+                    "time": "09:00:00"
+                },
+                {
+                    "id": 3,
+                    "username": "Marry",
+                    "sex": "1",
+                    "state": "5",
+                    "interest": "6",
+                    "isMarried": "1",
+                    "birthday": "2000-01-01",
+                    "address": "北京市海淀区奥林匹克公园",
+                    "time": "09:00:00"
+                },
+                {
+                    "id": 4,
+                    "username": "Marli",
+                    "sex": "1",
+                    "state": "3",
+                    "interest": "8",
+                    "isMarried": "1",
+                    "birthday": "2000-01-01",
+                    "address": "北京市海淀区奥林匹克公园",
+                    "time": "09:00:00"
+                },
+                {
+                    "id": 5,
+                    "username": "Toto",
+                    "sex": "1",
+                    "state": "1",
+                    "interest": "1",
+                    "isMarried": "1",
+                    "birthday": "2000-01-01",
+                    "address": "北京市海淀区奥林匹克公园",
+                    "time": "09:00:00"
+                },
+                {
+                    "id": 6,
+                    "username": "Cherry",
+                    "sex": "1",
+                    "state": "1",
+                    "interest": "1",
+                    "isMarried": "1",
+                    "birthday": "2000-01-01",
+                    "address": "北京市海淀区奥林匹克公园",
+                    "time": "09:00:00"
+                }
+            ]
+    }
+}

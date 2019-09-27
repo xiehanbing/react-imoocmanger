@@ -1,13 +1,23 @@
 import React from "react";
-import { Row, Col } from "antd";
+import { Row, Col, Form, Select } from "antd";
 import Utils from "../../utils/utils";
 import axios from "../../axios/index";
 import Location from "./../../utils/location";
 import "../Headers/index.less";
+import Store from "../../utils/Store";
+import { connect } from "react-redux";
+const FormItem = Form.Item;
 //3oG5RgnWMwuZWanMkAZLedqRdhRqd3yE
 
 //http://api.map.baidu.com/telematics/v3/weather?location={城市名}&output=json&ak=3oG5RgnWMwuZWanMkAZLedqRdhRqd3yE
-export default class Header extends React.Component {
+class Header extends React.Component {
+  state = {
+    dayPictureUrl: "",
+    weather: ""
+  };
+  constructor(props) {
+    super(props);
+  }
   componentWillMount() {
     this.setState({
       userName: "威廉"
@@ -70,7 +80,9 @@ export default class Header extends React.Component {
 
         <Row className="breadcrumb">
           <Col span={4} className="breadcrumb-title">
-            首页
+            {/* {this.props.currentMenu} */}
+            {/* 首页 */}
+            {this.props.menuName}
           </Col>
           <Col className="weather">
             <span className="date">{this.state.sysTime}</span>
@@ -84,3 +96,10 @@ export default class Header extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    menuName: state.menuName
+  };
+};
+export default connect(mapStateToProps)(Header);

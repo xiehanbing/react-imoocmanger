@@ -44,7 +44,7 @@ export default [
       {
         title: "轮播图",
         key: "/admin/ui/carousel"
-      },
+      }
     ]
   },
   {
@@ -53,14 +53,16 @@ export default [
     icon: "form",
     index: 0,
     order: 2,
-    children: [{
-      title: "登录",
-      key: "/admin/form/login"
-    },
-    {
-      title: "注册",
-      key: "/admin/form/register"
-    }]
+    children: [
+      {
+        title: "登录",
+        key: "/admin/form/login"
+      },
+      {
+        title: "注册",
+        key: "/admin/form/register"
+      }
+    ]
   },
   {
     title: "表格",
@@ -68,49 +70,51 @@ export default [
     icon: "table",
     index: 0,
     order: 3,
-    children: [{
-      title: "基础表格",
-      key: "/admin/table/basic"
-    },
-    {
-      title: "高级表格",
-      key: "/admin/table/high"
-    }]
+    children: [
+      {
+        title: "基础表格",
+        key: "/admin/table/basic"
+      },
+      {
+        title: "高级表格",
+        key: "/admin/table/high"
+      }
+    ]
   },
   {
     title: "富文本",
     key: "/admin/rich",
     icon: "edit",
     index: 0,
-    order: 4,
+    order: 4
   },
   {
     title: "城市管理",
     key: "/admin/city",
     icon: "bank",
     index: 0,
-    order: 5,
+    order: 5
   },
   {
     title: "订单管理",
     key: "/admin/order",
     icon: "ordered-list",
     index: 0,
-    order: 6,
+    order: 6
   },
   {
     title: "员工管理",
     key: "/admin/employee",
     icon: "user",
     index: 0,
-    order: 7,
+    order: 7
   },
   {
     title: "车辆地图",
     key: "/admin/carmap",
     icon: "car",
     index: 0,
-    order: 8,
+    order: 8
   },
   {
     title: "图标",
@@ -138,6 +142,6 @@ export default [
     key: "/admin/auth",
     icon: "unlock",
     index: 0,
-    order: 3,
+    order: 3
   }
-]
+];

@@ -5,7 +5,19 @@ import Footer from "./components/Footers/index";
 import NavLeft from "./components/NavLeft/index";
 import Home from "./pages/home/index";
 import "./style/common.less";
+import { connect } from "react-redux";
+import { switchMenu } from "./redux/action";
 export default class Admin extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      menuName: "首页"
+    };
+  }
+  onChildMenuName = name => {
+    this.setState({ menuName: name });
+  };
+
   render() {
     return (
       <Row className="container">

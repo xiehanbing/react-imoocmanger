@@ -1,0 +1,84 @@
+{
+  "result": {
+    "page": 1,
+    "page_size": 10,
+    "total_count": 100,
+    "item_list": [
+      {
+        "id": 1,
+        "name": "杭州",
+        "mode": 1,
+        "op_model": 1,
+        "franchisee_name": "哈哈",
+        "city_admins": [
+          {
+            "user_name": "谢冰"
+          }
+        ],
+        "open_time": "2019-09-26",
+        "update_time": "2019-09-26",
+        "sys_user_name": "谢冰"
+      },
+      {
+        "id": 2,
+        "name": "杭州",
+        "mode": 1,
+        "op_model": 1,
+        "franchisee_name": "哈哈",
+        "city_admins": [
+          {
+            "user_name": "谢冰"
+          }
+        ],
+        "open_time": "2019-09-26",
+        "update_time": "2019-09-26",
+        "sys_user_name": "谢冰"
+      },
+      {
+        "id": 3,
+        "name": "杭州",
+        "mode": 1,
+        "op_model": 1,
+        "franchisee_name": "哈哈",
+        "city_admins": [
+          {
+            "user_name": "谢冰"
+          }
+        ],
+        "open_time": "2019-09-26",
+        "update_time": "2019-09-26",
+        "sys_user_name": "谢冰"
+      },
+      {
+        "id": 4,
+        "name": "杭州",
+        "mode": 1,
+        "op_model": 1,
+        "franchisee_name": "哈哈",
+        "city_admins": [
+          {
+            "user_name": "谢冰"
+          }
+        ],
+        "open_time": "2019-09-26",
+        "update_time": "2019-09-26",
+        "sys_user_name": "谢冰"
+      },
+      {
+        "id": 5,
+        "name": "杭州",
+        "mode": 1,
+        "op_model": 1,
+        "franchisee_name": "哈哈",
+        "city_admins": [
+          {
+            "user_name": "谢冰"
+          }
+        ],
+        "open_time": "2019-09-26",
+        "update_time": "2019-09-26",
+        "sys_user_name": "谢冰"
+      }
+    ]
+  }
+}

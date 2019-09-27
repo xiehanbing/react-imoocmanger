@@ -8,7 +8,7 @@
     min-width: 180px;
     height: calc(100vh);
     background-color: #001529;
-
+    position: relative;
     .logo {
       line-height: 90px;
       padding-left: 20px;
@@ -32,14 +32,15 @@
   }
 
   .main {
-    height: calc(100wh);
+    height: calc(100vh);
     flex: 1;
+    overflow: auto;
     // background-color: @colorL;
   }
 
   .content {
     position: relative;
     padding: 20px;
-    height: calc(70%);
+    // height: calc(70%);
   }
 }
