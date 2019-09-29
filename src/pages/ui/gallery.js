@@ -8,7 +8,7 @@ export default class Gallery extends React.Component {
   openGallery = imgSrc => {
     this.setState({
       visible: true,
-      currentImg: "/gallery/" + imgSrc
+      currentImg: "./gallery/" + imgSrc
     });
   };
   render() {
@@ -28,7 +28,7 @@ export default class Gallery extends React.Component {
               onClick={() => this.openGallery(item)}
               alt="example"
               width="100%"
-              src={"/gallery/" + item}
+              src={"./gallery/" + item}
             ></img>
           }
         >

@@ -24,6 +24,11 @@ import PieChart from "./pages/charts/pie";
 import LineChart from "./pages/charts/line";
 
 import BikeMap from "./pages/map/bikeMap";
+
+import OrderIndex from "./pages/order/index";
+import UserIndex from "./pages/user/index";
+
+import Permission from "./pages/permission/index";
 export default class IRouter extends React.Component {
   render() {
     return (
@@ -73,6 +78,9 @@ export default class IRouter extends React.Component {
                   ></Route>
 
                   <Route path="/admin/carmap" component={BikeMap}></Route>
+                  <Route path="/admin/order" component={OrderIndex}></Route>
+                  <Route path="/admin/employee" component={UserIndex}></Route>
+                  <Route path="/admin/auth" component={Permission}></Route>
                   {/* <Route component={NoMatch}></Route> */}
                   <Redirect to="/admin/home" />
                 </Switch>

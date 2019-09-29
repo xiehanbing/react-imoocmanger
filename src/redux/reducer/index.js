@@ -6,7 +6,9 @@ import { type } from "./../action/index";
  */
 const initialState = {
   cityId: "",
-  menuName: ""
+  menuName: "",
+  isLoading: false,
+  collapsed: false
 };
 
 const ebikeData = (state = initialState, action) => {
@@ -25,6 +27,16 @@ const ebikeData = (state = initialState, action) => {
       return {
         ...state,
         btnKeys: action.btnKeys
+      };
+    case type.SHOW_LOADING:
+      return {
+        ...state,
+        isLoading: action.isLoading
+      };
+    case type.SIDER_MENU:
+      return {
+        ...state,
+        collapsed: action.collapsed
       };
     default:
       return { ...state };

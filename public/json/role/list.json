@@ -1,0 +1,18 @@
+{
+  "result": {
+    "page": 1,
+    "page_size": 10,
+    "total_count": 100,
+    "item_list": [
+      {
+        "id": 1,
+        "role_name": "管理员",
+        "create_time": "2019/09/29 16:57",
+        "status": 1,
+        "authorize_time": "2019/09/29 16:57",
+        "authorize_user_name": "谢汉冰"
+      }
+    ]
+  },
+  "code": 0
+}

@@ -1,11 +1,12 @@
 import React from "react";
-import { Row, Col, Form, Select } from "antd";
+import { Row, Col, Form, Select, Icon } from "antd";
 import Utils from "../../utils/utils";
 import axios from "../../axios/index";
 import Location from "./../../utils/location";
 import "../Headers/index.less";
 import Store from "../../utils/Store";
 import { connect } from "react-redux";
+import { switchSiderMenu } from "../../redux/action";
 const FormItem = Form.Item;
 //3oG5RgnWMwuZWanMkAZLedqRdhRqd3yE
 
@@ -13,7 +14,8 @@ const FormItem = Form.Item;
 class Header extends React.Component {
   state = {
     dayPictureUrl: "",
-    weather: ""
+    weather: "",
+    collapsed: false
   };
   constructor(props) {
     super(props);
@@ -68,11 +70,31 @@ class Header extends React.Component {
         }
       });
   };
+  handleToggle = item => {
+    // if (item.key == this.state.currentKey) {
+    //   return false;
+    // }
+    //事件派发 自动调用reducer 保存到 store 对象中
+    const { dispatch } = this.props;
+    dispatch(switchSiderMenu(!this.state.collapsed));
+    this.setState({
+      collapsed: !this.state.collapsed
+    });
+  };
   render() {
     return (
       <div className="header">
         <Row className="header-top">
-          <Col span={24}>
+          <Col span={2} style={{ textAlign: "left" }}>
+            {/* <Header style={{ background: "#fff", padding: 0 }}> */}
+            <Icon
+              className="trigger"
+              type={this.state.collapsed ? "menu-unfold" : "menu-fold"}
+              onClick={this.handleToggle}
+            />
+            {/* </Header> */}
+          </Col>
+          <Col span={22}>
             <span>欢迎,{this.state.userName}</span>
             <a href="#">退出</a>
           </Col>

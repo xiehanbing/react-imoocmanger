@@ -4,7 +4,9 @@
 export const type = {
   SWITCH_CITY: "SWITCH_CITY",
   SWITCH_MENU: "SWITCH_MENU",
-  BUTTON_LIST: "BUTTON_LIST"
+  BUTTON_LIST: "BUTTON_LIST",
+  SHOW_LOADING: "SHOW_LOADING",
+  SIDER_MENU: "SIDER_MENU"
 };
 
 /**
@@ -28,6 +30,20 @@ export function switchMenu(menuName) {
   return {
     type: type.SWITCH_MENU,
     menuName
+  };
+}
+
+export function showLoading(isLoading) {
+  return {
+    type: type.SHOW_LOADING,
+    isLoading
+  };
+}
+
+export function switchSiderMenu(collapsed) {
+  return {
+    type: type.SIDER_MENU,
+    collapsed
   };
 }
 /**

@@ -236,7 +236,7 @@ export default class BarChart extends React.Component {
             style={{ height: 500 }}
           />
         </Card>
-        <Card title="饼形图之三" style={{ marginTop: 10 }}>
+        <Card title="饼形图之南丁格尔图" style={{ marginTop: 10 }}>
           <ReactEcharts
             option={this.getOption3()}
             theme="Imooc"

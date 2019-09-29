@@ -30,14 +30,14 @@ export default class Carousels extends React.Component {
         <Card title="图片轮播" className="slider-wrap">
           <Carousel autoplay>
             <div>
-              <img src="/assets/carousel-img/carousel-1.jpg"></img>
+              <img src="./assets/carousel-img/carousel-1.jpg"></img>
             </div>
             <div>
-              <img src="/assets/carousel-img/carousel-2.jpg"></img>
+              <img src="./assets/carousel-img/carousel-2.jpg"></img>
               <span>123</span>
             </div>
             <div>
-              <img src="/assets/carousel-img/carousel-3.jpg"></img>
+              <img src="./assets/carousel-img/carousel-3.jpg"></img>
             </div>
           </Carousel>
         </Card>

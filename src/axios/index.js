@@ -2,6 +2,7 @@ import JsonP from "jsonp";
 import axios from "axios";
 import Utils from "../utils/utils";
 import Store from "../utils/Store";
+import { message } from "antd";
 /**
  *axios 跨域请求
  *Promise 链式调用 无需在 success 里回调
@@ -36,27 +37,31 @@ export default class Axios {
     this.ajax({
       url: url,
       data: data
-    }).then(data => {
-      if (data) {
-        if (data.result && data.result.item_list) {
-          _this.setState({
-            items: data.result.item_list.map((item, index) => {
-              item.key = index;
-              return item;
-            }),
-            pagination: Utils.pagination(data, current => {
-              _this.params.page = current;
-              _this.requestList();
-            }),
-            selectedRowKeys: [],
-            selectedItem: "",
-            selectedIds: ""
-          });
+    })
+      .then(data => {
+        if (data) {
+          if (data.result && data.result.item_list) {
+            _this.setState({
+              items: data.result.item_list.map((item, index) => {
+                item.key = index;
+                return item;
+              }),
+              pagination: Utils.pagination(data, current => {
+                _this.params.page = current;
+                _this.requestList();
+              }),
+              selectedRowKeys: [],
+              selectedItem: "",
+              selectedIds: ""
+            });
+          }
+        } else {
+          alert("请求失败");
         }
-      } else {
-        alert("请求失败");
-      }
-    });
+      })
+      .catch(error => {
+        message.error("请求异常");
+      });
   }
 
   static ajax(options) {
@@ -107,6 +112,12 @@ export default class Axios {
             }
           },
           result => {
+            loading.style.display = "none";
+            if (result.response.status == "404") {
+              message.error("资源未找到");
+            } else if (result.response.data.code == "10008") {
+              message.error("登录失效");
+            }
             console.log(":::" + result);
           }
         )

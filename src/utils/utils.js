@@ -1,7 +1,8 @@
-import { Modal, Select, Icon } from "antd";
+import { Modal, Select, Icon, message } from "antd";
 import React from "react";
 import Store from "./Store.js";
 import Environment from "./../config/Environment";
+import UiConfirm from "./../pages/ui/confirm";
 const Option = Select.Option;
 export default {
   /**
@@ -128,5 +129,63 @@ export default {
         selectedItem: selectedRows
       });
     }
+  },
+
+  modalInfo(content, title) {
+    if (title == null || title == "") title = "信息";
+    Modal.info({
+      title: title,
+      content: content
+    });
+  },
+  modalSuccess(content, title) {
+    if (title == null || title == "") title = "信息";
+    Modal.success({
+      title: title,
+      content: content
+    });
+  },
+  modalError(content, title) {
+    if (title == null || title == "") title = "信息";
+    Modal.error({
+      title: title,
+      content: content
+    });
+  },
+  modalWarning(content, title) {
+    if (title == null || title == "") title = "信息";
+    Modal.warning({
+      title: title,
+      content: content
+    });
+  },
+
+  messageInfo(content, title) {
+    message.info(content);
+  },
+  messageSuccess(content) {
+    message.success(content);
+  },
+  messageError(content, title) {
+    message.error(content);
+  },
+  messageWarning(content, title) {
+    message.warning(content);
+  },
+
+  confirm(props) {
+    var title = props.title || "确认?";
+    var content = props.text || "是否确认";
+    var okText = props.okText || "确认";
+    var cancelText = props.cancelText || "取消";
+    Modal.confirm({
+      title: title,
+      content: content,
+      okText: okText,
+      cancelText: cancelText,
+      onOk: props.onOk
+      // visible: props.visible,
+      // onCancel: props.onCancel
+    });
   }
 };
