@@ -21,8 +21,9 @@ class Header extends React.Component {
     super(props);
   }
   componentWillMount() {
+    Store.save("userName", "威廉");
     this.setState({
-      userName: "威廉"
+      userName: Store.fetch("userName")
     });
     this.setState({
       weatherImage: "",
@@ -104,7 +105,7 @@ class Header extends React.Component {
           <Col span={4} className="breadcrumb-title">
             {/* {this.props.currentMenu} */}
             {/* 首页 */}
-            {this.props.menuName}
+            {this.props.menuName || "首页"}
           </Col>
           <Col className="weather">
             <span className="date">{this.state.sysTime}</span>

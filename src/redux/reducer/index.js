@@ -21,7 +21,7 @@ const ebikeData = (state = initialState, action) => {
     case type.SWITCH_MENU:
       return {
         ...state,
-        menuName: action.menuName
+        menuName: action.menuName || "首页"
       };
     case type.BUTTON_LIST:
       return {
