@@ -362,10 +362,11 @@ class NavLeft extends React.Component {
             key={item.key}
             title={item.title}
           >
-            <Icon type={item.icon} />
-            <span>
-              <NavLink to={item.key}>{item.title}</NavLink>
-            </span>
+            <NavLink to={item.key}>
+              <Icon type={item.icon} />
+
+              <span>{item.title}</span>
+            </NavLink>
           </Menu.Item>
         ) : (
           <Menu.Item key={item.key} name={item.title} title={item.title}>

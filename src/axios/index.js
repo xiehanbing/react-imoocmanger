@@ -72,6 +72,10 @@ export default class Axios {
     }
     //
     const baseApi = Utils.getEnvironmentUrl("DATA_URL");
+    if (baseApi == null) {
+      message.error("当前地址为空");
+      return;
+    }
 
     return new Promise((resolve, reject) => {
       axios({
@@ -117,7 +121,7 @@ export default class Axios {
               message.error("资源未找到");
             } else if (result.response.data.code == "10008") {
               message.error("登录失效");
-            }
+            } else message.error("系统异常");
             console.log(":::" + result);
           }
         )

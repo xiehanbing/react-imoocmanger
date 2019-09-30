@@ -1,0 +1,247 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>在百度地图点击位置获取坐标 - 素材牛（www.sucainiu.com）</title>
+	<script id="jqbb" src="http://libs.baidu.com/jquery//jquery.min.js"></script>
+	<style type="text/css">
+		body {
+			background-color: #fff
+		}
+
+		#preview {
+			border: 1px solid #bfd2e1;
+			/* width: 490px; */
+			width: 100%;
+			height: 368px;
+			font-family: Arial, Helvetica, sans-serif, "??";
+		}
+
+		#map_container {
+			height: 368px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="preview">
+
+		<div id="map_container"></div>
+	</div>
+
+	<div>
+		<span>开始点位lng<input type="input" id="startx" value="120.130677" /></span>
+		<span>开始点位lat<input type="input" id="starty" value="30.282867" /></span>
+		<br />
+
+		<!-- 120.161354   30.284684 -->
+		<span>结束点位lng<input type="input" id="endx" value="120.161354" /></span>
+		<span>结束点位lat<input type="input" id="endy" value="30.284684" /></span>
+		<br />
+		<span>管廊名称<input type="input" id="tunnlName" value="广阳道管廊" /></span>
+		<span>管廊target<input type="input" id="target" value="guangyangdao" /></span>
+		<br />
+		<span><input type="button" onclick="getPointByLine()" value="开始" /></span>
+	</div>
+	<span>结果：</span>
+	<div id="result" style="margin-top: 4px;"></div>
+	<br/>
+	<span>json:</span>
+	<div  style="margin-top: 4px;">
+	<textarea id="jsonData" rows="5"></textarea>
+	</div>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
+	<script type="text/javascript">
+
+	</script>
+
+	<script>
+		var marker_trick = false;
+		var map = new BMap.Map("map_container"); //
+		map.enableScrollWheelZoom();
+		var point = new BMap.Point(120.133228, 30.283054);
+		map.centerAndZoom(point, 17);
+		window.map = map;
+
+		// var marker = new BMap.Marker(new BMap.Point(120.133228, 30.283054), {
+		// 	enableMassClear: false,
+		// 	raiseOnDrag: true
+		// });
+		// marker.enableDragging();
+		// map.addOverlay(marker);
+
+		map.addEventListener("click", function (e) {
+			if (!(e.overlay)) {
+				map.clearOverlays();
+				// marker.show();
+				// marker.setPosition(e.point);
+				setResult(e.point.lng, e.point.lat);
+			}
+		});
+		// marker.addEventListener("dragend", function (e) {
+		// 	setResult(e.point.lng, e.point.lat);
+		// });
+
+		var local = new BMap.LocalSearch(map, {
+			renderOptions: {
+				map: map
+			},
+			pageCapacity: 1
+		});
+		local.setSearchCompleteCallback(function (results) {
+			if (local.getStatus() !== BMAP_STATUS_SUCCESS) {
+				alert("???");
+			} else {
+				// marker.hide();
+			}
+		});
+		local.setMarkersSetCallback(function (pois) {
+			for (var i = pois.length; i--;) {
+				var marker = pois[i].marker;
+				// marker.addEventListener("click", function (e) {
+				// 	marker_trick = true;
+				// 	var pos = this.getPosition();
+				// 	setResult(pos.lng, pos.lat);
+				// });
+			}
+		});
+
+		//getPointByLine();
+		function setResult(lng, lat) {
+			document.getElementById("result").innerHTML = lng + ", " + lat;
+		}
+
+		function getPointByLine() {
+			map.clearOverlays();
+			var startx = parseFloat(document.getElementById('startx').value);
+			var starty = parseFloat(document.getElementById('starty').value);
+			var endx = parseFloat(document.getElementById('endx').value);
+			var endy = parseFloat(document.getElementById('endy').value);
+			var percent = 120;
+			//var projection = new BMap.MercatorProjection();
+			// var pointA = new BMap.Point(120.130677, 30.282867);  // 创建点坐标A--大渡口区
+			// var pointB = new BMap.Point(120.133462, 30.28296);
+			var pointA = new BMap.Point(startx, starty);  // 创建点坐标A--大渡口区
+			var pointB = new BMap.Point(endx, endy);
+			//var pointBxy = projection.lngLatToPoint(pointB);
+			//var pointAxy = projection.lngLatToPoint(pointA);
+			var bx = pointB.lng;
+			var ax = pointA.lng;
+			var by = pointB.lat;
+			var ay = pointA.lat;
+			var d = (map.getDistance(pointA, pointB)).toFixed(2);
+			console.log(d);
+			var n = Math.floor(d / percent);
+			var actualN = d / percent;
+			console.log(n);
+			var dx = percent * (bx - ax) / d;
+			var dy = percent * (by - ay) / d;
+			//alert(dx);
+			var xc = dx + ax;
+			var yc = dy + ay;
+			var content = '';
+			var midd = 0;
+			var oldPoint;
+
+			var markerA = new BMap.Marker(pointA);  // 创建标注
+			// 将标注添加到地图中
+			var label = new BMap.Label("pointA", {
+				//offset: new BMap.Size(baseData.markFirstPoint.labelSize[0], baseData.markFirstPoint.labelSize[1]),   //内容偏移量+
+				offset: new BMap.Size(10, -30),   //内容偏移量+
+				position: pointA
+			});
+			markerA.setLabel(label);//显示标注点的内容
+			map.addOverlay(markerA);
+			map.panTo(pointA);
+
+			var markerB = new BMap.Marker(pointB);  // 创建标注
+			// 将标注添加到地图中
+			label = new BMap.Label("pointB", {
+				offset: new BMap.Size(10, -30),   //内容偏移量+
+				//offset: new BMap.Size(baseData.markFirstPoint.labelSize[0], baseData.markFirstPoint.labelSize[1]),   //内容偏移量+
+				position: pointB
+			});
+
+			markerB.setLabel(label);//显示标注点的内容
+			map.addOverlay(markerB);
+			map.panTo(pointB);
+
+
+			var resultPoints = [];
+			for (var i = 1; i <= n; i++) {
+
+				var xc = (i + midd) * dx + ax;
+				var yc = (i + midd) * dy + ay;
+				var new_point = new BMap.Point(xc, yc);
+
+
+				if (i === 1) {
+					oldPoint = pointA;
+
+				}
+
+				var itemPoint =new Object;
+				itemPoint.point= [oldPoint, new_point];
+				resultPoints.push(itemPoint);
+				var marker = new BMap.Marker(new_point);  // 创建标注
+				label = new BMap.Label("new_point" + i, {
+					offset: new BMap.Size(10, -30),   //内容偏移量+
+					position: new_point
+				});
+				marker.setLabel(label);//显示标注点的内容
+				map.addOverlay(marker);
+				map.panTo(new_point);
+				content += '"lat":' + oldPoint.lng + ',"lng":' + oldPoint.lat + '},{"lat":' + new_point.lng + ',"lng":' + new_point.lat + "<br/>"
+				//midd=1;
+				oldPoint = new_point;
+			}
+			if (actualN > n) {
+				var itemPoint =new Object;
+				itemPoint.point= [oldPoint, new_point];
+				resultPoints.push(itemPoint);
+				content += '"lat":' + oldPoint.lng + ',"lng":' + oldPoint.lat + '},{"lat":' + pointB.lng + ',"lng":' + pointB.lat + "<br/>"
+			}
+			document.getElementById("result").innerHTML = content;
+			consoleJson(resultPoints);
+		}
+		//打印json 字符串
+		function consoleJson(data) {
+			var groupName = document.getElementById('tunnlName').value;
+			var target = document.getElementById('target').value;
+			var content = '{"GroupName":"' + groupName + '",'
+				+'"target": "'+target+'",'
+				+' "part": [';
+
+			for (var i = 0; i < data.length; i++) {
+				
+				var pointStr="";
+				for(var j=0;j<data[i].point.length;j++){
+					var itemData=data[i].point[j];
+					pointStr+='{"lat":'+itemData.lng
+					+',"lng":'+itemData.lat+"},";
+				}
+				content+='{"id":'+(i+1)+','
+				+'"title":"'+(i+1)+"号分区"+'",'
+				+'"target":"'+target+'",'
+				+'"GroupName":"'+ groupName + '",'
+				+'"point":['+pointStr.substring(0,pointStr.length-1)+'],'
+				+'"error":0,'
+				+'"errorList":[],'
+				+'"warning":0,'
+				+'"warningList":[]'
+				+'},';
+
+			}
+
+			content=content.substring(0,content.length-1)+']}';
+			document.getElementById('jsonData').innerHTML=content;
+		}
+
+
+
+	</script>
+</body>
+
+</html>
