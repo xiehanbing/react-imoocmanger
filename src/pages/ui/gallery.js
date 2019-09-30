@@ -29,6 +29,7 @@ export default class Gallery extends React.Component {
               alt="example"
               width="100%"
               src={"./gallery/" + item}
+              className="gallery-img-item"
             ></img>
           }
         >

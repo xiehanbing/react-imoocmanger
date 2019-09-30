@@ -29,6 +29,8 @@ import OrderIndex from "./pages/order/index";
 import UserIndex from "./pages/user/index";
 
 import Permission from "./pages/permission/index";
+import TimeLine from "./pages/ui/timeLine";
+import ProgressIndex from "./pages/ui/progress";
 export default class IRouter extends React.Component {
   render() {
     return (
@@ -52,7 +54,14 @@ export default class IRouter extends React.Component {
                   <Route path="/admin/ui/tabs" component={Tabs}></Route>
                   <Route path="/admin/ui/gallery" component={Gallery}></Route>
                   <Route path="/admin/ui/carousel" component={Carousel}></Route>
+                  <Route path="/admin/ui/timeline" component={TimeLine}></Route>
+
+                  <Route
+                    path="/admin/ui/progress"
+                    component={ProgressIndex}
+                  ></Route>
                   <Route path="/admin/form/login" component={Login}></Route>
+
                   <Route
                     path="/admin/form/register"
                     component={Register}

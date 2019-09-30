@@ -348,7 +348,7 @@ class NavLeft extends React.Component {
             item.title
           );
         return (
-          <SubMenu key={item.key} title={title}>
+          <SubMenu key={item.key} title={title} className="menu-wrap">
             {this.renderMenu(item.children)}
           </SubMenu>
         );
@@ -429,12 +429,12 @@ class NavLeft extends React.Component {
             onCollapse={this.onCollapse}
             width="calc(25vh)"
             // collapsedWidth="50px"
+            collapsedWidth="50px"
           >
             <Menu
               style={{ display: "", height: "70px", borderRight: "0px" }}
               className="logoMenu"
             >
-              {" "}
               <Menu.Item className="logo" name="logo" key="logo">
                 <ImoocIcon />
                 <span>

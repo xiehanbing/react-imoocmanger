@@ -44,6 +44,14 @@ export default [
       {
         title: "轮播图",
         key: "/admin/ui/carousel"
+      },
+      {
+        title: "时间轴",
+        key: "/admin/ui/timeline"
+      },
+      {
+        title: "进度条",
+        key: "/admin/ui/progress"
       }
     ]
   },
