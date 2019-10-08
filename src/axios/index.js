@@ -91,7 +91,7 @@ export default class Axios {
         .then(
           response => {
             if (options.data && options.data.isShowLoading !== false) {
-              loading.style.display = "none";
+              document.getElementById("ajaxLoading").style.display = "none";
             }
             if (response.status == "200") {
               const result = response.data;
@@ -116,7 +116,7 @@ export default class Axios {
             }
           },
           result => {
-            loading.style.display = "none";
+            document.getElementById("ajaxLoading").style.display = "none";
             if (result.response.status == "404") {
               message.error("资源未找到");
             } else if (result.response.data.code == "10008") {
@@ -126,7 +126,7 @@ export default class Axios {
           }
         )
         .catch(error => {
-          loading.style.display = "none";
+          document.getElementById("ajaxLoading").style.display = "none";
           console.error(
             "EBike Request Error,",
             `Request Url：${error && error.config && error.config.url}`

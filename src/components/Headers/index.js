@@ -61,7 +61,9 @@ class Header extends React.Component {
           let data = res.results[0].weather_data[0];
           this.setState({
             weatherImage: data.dayPictureUrl,
-            weatherMessage: data.weather
+            imageAlt: data.date,
+            weatherMessage: data.weather,
+            temperature: data.temperature
           });
         } else {
           this.setState({
@@ -110,9 +112,16 @@ class Header extends React.Component {
           <Col className="weather">
             <span className="date">{this.state.sysTime}</span>
             <span className="weather-image">
-              <img src={this.state.weatherImage} />
+              <img
+                src={this.state.weatherImage}
+                alt={this.state.imageAlt}
+                title={this.state.imageAlt}
+              />
             </span>
             <span className="weather-message">{this.state.weatherMessage}</span>
+            <span className="weather-message temperature">
+              {this.state.temperature}
+            </span>
           </Col>
         </Row>
       </div>
